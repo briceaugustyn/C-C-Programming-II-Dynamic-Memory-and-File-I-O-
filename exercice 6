@@ -1,0 +1,50 @@
+/*
+* ...the usual title block Student/Course/Assignment/Compiler information goes here... *
+* This file contains macros:
+* Product: Produces the product of its two parameters.
+* Negate: Produces the negation of its parameter.
+* Elements: Produces a count of the number of elements in its array
+* type parameter. 11 */
+
+
+/*
+* ...the usual title block Student/Course/Assignment/Compiler information goes here... *
+
+* This file contains function:
+* ResizeAlloc: Dynamically resizes or creates a dynamic allocation. */
+
+#include <stdlib.h>
+#include <string.h>
+
+
+     
+void *ResizeAlloc(void *pOld, size_t newSize, size_t oldSize)
+{
+   void *pNew = NULL;
+   /* If newSize != 0 and allocation succeeds. */
+   if (newSize != 0 && (pNew = malloc(newSize)) != NULL)
+   {
+        /*If an allocation already exists. */
+        if (pOld != NULL)
+        /* Prevent copying from overrunning the new block. */
+        {
+            if (oldSize > newSize)
+            oldSize = newSize;
+            /* Copy from old block into new, then free old. */
+            memcpy(pNew, pOld, oldSize);
+            free(pOld);
+        }     
+   }
+    return pNew;
+}
+
+#include <stdio.h>
+
+int main()
+{
+    int *a;
+
+    printf("Hello World \n");
+    printf("%d",ResizeAlloc(a, 10, 20));
+    return 0;
+}
