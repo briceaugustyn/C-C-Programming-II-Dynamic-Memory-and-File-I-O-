@@ -1,0 +1,22 @@
+/*
+4 * ...the usual title block Student/Course/Assignment/Compiler information goes here... 5*
+6 * This file contains macros:
+7 * Product: Produces the product of its two parameters.
+8 * Negate: Produces the negation of its parameter.
+9 * Elements: Produces a count of the number of elements in its array
+10 * type parameter. 11 */
+
+#define Product(a,b) ((a)*(b))
+#define Negate(a) (-(a))
+#define Elements(arrayDesig) (sizeof(arrayDesig)/sizeof(*(arrayDesig)))
+#include <stdio.h>
+
+int main()
+{
+    int a[10];
+    printf("Hello World \n");
+    printf("%d \n",Product(2,3));
+    printf("%d \n",Negate(7));
+    printf("%ld \n",Elements(a));    
+    return 0;
+}
